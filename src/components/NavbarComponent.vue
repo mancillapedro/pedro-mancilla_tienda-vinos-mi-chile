@@ -27,9 +27,9 @@ export default {
     ],
   }),
   methods: {
-    routeDisabled(route){
-        return this.$route.name == route
-    }
+    routeDisabled(route) {
+      return this.$route.name == route;
+    },
   },
 };
 </script>
