@@ -34,13 +34,10 @@
   </v-card>
 </template>
 
-
 <script>
 export default {
   name: "CardWithDescriptionComponent",
   props: ["product"],
-  // data: () => ({}),
-  // computed: {},
   methods: {
     agregar(product) {
       this.$emit("agregar", {
@@ -49,14 +46,7 @@ export default {
         imagen: product.imagen,
         valor: Number(product.precio_promo),
       });
-      // return console.log(id)
     },
   },
-  // watch: {},
-  // components: {},
-  // mixins: [],
-  // filters: {},
-  // -- Lifecycle Methods
-  // -- End Lifecycle Methods
 };
 </script>

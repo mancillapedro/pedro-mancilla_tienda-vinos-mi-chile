@@ -11,7 +11,6 @@ export default new Vuex.Store({
     subTotal: (state) => state.bag.reduce((total, product) => total + Number(product.valor), 0),
     descuento: (_, getters) => getters.subTotal < 100000 ? getters.subTotal * 0.05 : getters.subTotal * 0.11,
     total: (_, getters) => getters.subTotal - getters.descuento,
-
   },
   mutations: {
     ADD_TO_BAG({ bag }, product) { bag.push(product) }

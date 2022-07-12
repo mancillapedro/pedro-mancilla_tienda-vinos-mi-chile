@@ -2,6 +2,17 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
+const fetchToApi = async (path) => {
+  try {
+    const response = await fetch(path);
+    if (!response.ok) throw "Error en API";
+    const json = await response.json();
+    return json.productos
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -16,8 +27,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "vinos" */ '../views/VinosView.vue')
   },
   {
-    path: '/vinosEnPromocion',
+    path: '/promocion',
     name: 'vinosEnPromocion',
+    props: { getProducts: async () => await fetchToApi('/promocion.json') },
     component: () => import(/* webpackChunkName: "vinosEnPromocion" */ '../views/VinosEnPromocionView.vue')
   },
   {
