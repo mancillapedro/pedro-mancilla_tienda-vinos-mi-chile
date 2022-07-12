@@ -23,7 +23,7 @@
           <v-card-subtitle v-text="product.precio_promo" />
         </v-col>
       </v-row>
-      <v-btn color="primary" elevation="2" v-text="`Agregar`" @click="agregar(product.id)" />
+      <v-btn color="primary" elevation="2" v-text="`Agregar`" @click="agregar(product.id)" block/>
     </v-card-text>
   </v-card>
   <!-- {
