@@ -16,11 +16,26 @@
       <v-row class="pt-0">
         <v-col>
           <v-card-title class="pt-0" v-text="`Antes`" />
-          <v-card-subtitle v-text="product.precio_normal" />
+          <v-card-subtitle
+            v-text="
+              product.precio_normal.toLocaleString('es-cl', {
+                style: 'currency',
+                currency: 'clp',
+              })
+            "
+          />
         </v-col>
         <v-col>
           <v-card-title class="pt-0" v-text="`Ahora`" />
-          <v-card-subtitle v-text="product.precio_promo" />
+          <v-card-subtitle
+            class="primary--text"
+            v-text="
+              product.precio_promo.toLocaleString('es-cl', {
+                style: 'currency',
+                currency: 'clp',
+              })
+            "
+          />
         </v-col>
       </v-row>
       <v-btn

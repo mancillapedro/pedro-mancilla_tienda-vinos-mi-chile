@@ -10,17 +10,36 @@
           </v-avatar>
           <div>
             <v-card-title v-text="product.nombre" />
-            <v-card-subtitle v-text="product.valor" />
+            <v-card-subtitle
+              class="primary--text"
+              v-text="
+                product.valor.toLocaleString('es-cl', {
+                  style: 'currency',
+                  currency: 'clp',
+                })
+              "
+            />
           </div>
         </div>
       </v-card>
     </v-card-text>
     <v-divider />
     <v-card-text>
-      <v-row>
+      <v-row justify="">
         <template v-for="(total, i) in totales">
           <v-col cols="6" :key="`text${i}`" v-text="total.text" />
-          <v-col cols="6" :key="`total${i}`" v-text="total.total" />
+          <v-col
+            class="text-h6"
+            :class="{ 'primary--text': total.text == `Total` }"
+            cols="6"
+            :key="`total${i}`"
+            v-text="
+              total.total.toLocaleString('es-cl', {
+                style: 'currency',
+                currency: 'clp',
+              })
+            "
+          />
         </template>
       </v-row>
       <v-btn
@@ -41,7 +60,7 @@ import { mapGetters, mapState } from "vuex";
 export default {
   name: "BagComponent",
   computed: {
-    ...mapState(['bag']),
+    ...mapState(["bag"]),
     ...mapGetters(["subTotal", "descuento", "total"]),
     totales() {
       return [

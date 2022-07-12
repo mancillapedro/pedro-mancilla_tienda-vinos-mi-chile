@@ -1,5 +1,5 @@
 <template>
-  <nav id="NavbarComponent">
+  <nav id="NavbarComponent" class="mb-16">
     <v-app-bar app color="black" dark>
       <v-toolbar-title v-text="`Vinos Mi Chile`" />
       <v-spacer></v-spacer>

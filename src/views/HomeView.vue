@@ -12,7 +12,7 @@
         :src="vino.imagen"
       />
     </v-carousel>
-    <h1 class="text-center" v-text="`Nuestros vinos`" />
+    <h1 class="mb-8 text-center" v-text="`Nuestros vinos`" />
     <v-row>
       <v-col cols="12" md="4" v-for="(vino, i) in tiposVino" :key="i">
         <v-card height="100%">
