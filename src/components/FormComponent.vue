@@ -64,8 +64,8 @@ export default {
     datos: {},
     datosComprador: [
       { name: "name", label: "Nombre" },
-      { name: "email", label: "Email" },
-      { name: "repeatEmail", label: "Repetir Email" },
+      { name: "email", label: "Email", type: "email" },
+      { name: "repeatEmail", label: "Repetir Email", type: "email", rules:['repeatEmail'] },
       { name: "phone", label: "Teléfono" },
     ],
     datosDespacho: [
@@ -84,12 +84,21 @@ export default {
     getRules(input) {
       const rules = {
         text: (v) => !!v || "Este campo es obligatorio",
-        minLength: (v) => v?.length >= 8 || "Mínimo 8 caracteres",
+        email: (v) => !!v || "Ingrese un email valido",
+        repeatEmail: (v) =>
+          (this.datos.email == v) || "Ingrese el mismo email",
       };
       return [
         rules[input.type || "text"],
         ...(input.rules || []).map((rule) => rules[rule]),
       ];
+    },
+    submitForm() {
+      this.$refs.form.validate();
+      if (!this.valid) return;
+      this.datos["orden"] = Date.now();
+      console.log(this.datos);
+      this.$emit("submitForm", this.datos);
     },
   },
   // watch: {},
