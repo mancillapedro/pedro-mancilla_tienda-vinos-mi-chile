@@ -2,8 +2,18 @@
   <v-card id="BagComponent">
     <v-card-title v-text="`Bolsa de Compra Vinos Mi Chile`" />
     <v-divider />
-    <v-card-text>
-      <v-card v-for="(product, i) in products" :key="i"></v-card>
+    <v-card-text class="py-0">
+      <v-card class="my-4" v-for="(product, i) in bag" :key="i">
+        <div class="d-flex flex-no-wrap">
+          <v-avatar class="ma-3" size="125" tile>
+            <v-img :src="product.imagen"></v-img>
+          </v-avatar>
+          <div>
+            <v-card-title v-text="product.nombre" />
+            <v-card-subtitle v-text="product.valor" />
+          </div>
+        </div>
+      </v-card>
     </v-card-text>
     <v-divider />
     <v-card-text>
@@ -18,18 +28,21 @@
 </template>
 
 <script>
+import { mapGetters, mapState } from "vuex";
 export default {
   name: "BagComponent",
   // props: {},
-  data: () => ({
-    products: [],
-  }),
+  // data: () => ({
+  //   products: [],
+  // }),
   computed: {
+    ...mapState(["bag"]),
+    ...mapGetters(["subTotal", "descuento", "total"]),
     totales() {
       return [
-        { text: "Subtotal Productos", total: 12 },
-        { text: "Descuentos", total: 23 },
-        { text: "Total", total: 34 },
+        { text: "Subtotal Productos", total: this.subTotal },
+        { text: "Descuentos", total: this.descuento },
+        { text: "Total", total: this.total },
       ];
     },
   },

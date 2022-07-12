@@ -46,3 +46,8 @@ export default {
   data: () => ({}),
 };
 </script>
+<style>
+* {
+  word-break: break-word !important;
+}
+</style>

@@ -15,7 +15,7 @@
     <h1 class="text-center" v-text="`Nuestros vinos`" />
     <v-row>
       <v-col cols="12" md="4" v-for="(vino, i) in tiposVino" :key="i">
-        <v-card>
+        <v-card height="100%">
           <v-img height="250" :src="vino.imagen" />
           <v-card-title v-text="vino.nombre" />
           <v-card-text v-text="vino.texto" />

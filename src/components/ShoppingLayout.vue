@@ -7,7 +7,7 @@
       <h1 v-text="title" />
       <v-row>
         <v-col cols="4" v-for="product in products" :key="product.id">
-            <card-with-description-component :product="product" />
+            <card-with-description-component :product="product" @agregar="addToBag"/>
         </v-col>
       </v-row>
     </v-col>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import BagComponent from './BagComponent.vue';
 import CardWithDescriptionComponent from './CardWithDescriptionComponent.vue';
 export default {
@@ -23,7 +24,9 @@ export default {
   props: ["title", "products"],
   // data: () => ({}),
   // computed: {},
-  // methods: {},
+  methods: {
+    ...mapActions(['addToBag'])
+  },
   // watch: {},
   // components: {},
   // mixins: [],
