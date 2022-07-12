@@ -9,8 +9,8 @@
     <v-card-text>
       <v-row>
         <template v-for="(total, i) in totales">
-          <v-col :key="i" v-text="total.text" />
-          <v-col :key="i" v-text="total.total" />
+          <v-col cols="6" :key="`text${i}`" v-text="total.text" />
+          <v-col cols="6" :key="`total${i}`" v-text="total.total" />
         </template>
       </v-row>
     </v-card-text>

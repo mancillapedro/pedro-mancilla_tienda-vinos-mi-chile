@@ -10,6 +10,11 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+    {
+    path: '/vinos',
+    name: 'vinos',
+    component: () => import(/* webpackChunkName: "vinos" */ '../views/VinosView.vue')
+  }
   // {
   //   path: '/about',
   //   name: 'about',
