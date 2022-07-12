@@ -1,20 +1,59 @@
 <template>
-  <div id="HomeView">
-    <h1 v-text="`HomeView`" />
-  </div>
+  <v-container id="HomeView">
+    <v-carousel
+      cycle
+      height="400"
+      hide-delimiter-background
+      show-arrows-on-hover
+    >
+      <v-carousel-item
+        v-for="(vino, i) in mejoresVinos"
+        :key="i"
+        :src="vino.imagen"
+      />
+    </v-carousel>
+    <h1 class="text-center" v-text="`Nuestros vinos`" />
+    <v-row>
+      <v-col cols="12" md="4" v-for="(vino, i) in tiposVino" :key="i">
+        <v-card>
+          <v-img height="250" :src="vino.imagen" />
+          <v-card-title v-text="vino.nombre" />
+          <v-card-text v-text="vino.texto" />
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 export default {
   name: "HomeView",
   // props: {},
-  // data: () => ({}),
+  data: () => ({
+    tiposVino: null,
+    mejoresVinos: null,
+  }),
   // computed: {},
-  // methods: {},
+  methods: {
+    async fetchHome() {
+      try {
+        const response = await fetch("/home.json");
+        if (!response.ok) throw "Error en API";
+        const json = await response.json();
+        this.tiposVino = json.tiposvino;
+        this.mejoresVinos = json.mejoresvinos;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
   // watch: {},
   // components: {},
   // mixins: [],
   // filters: {},
+  created() {
+    this.fetchHome();
+  },
   // -- Lifecycle Methods
   // -- End Lifecycle Methods
 };
