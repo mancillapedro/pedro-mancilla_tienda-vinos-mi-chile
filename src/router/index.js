@@ -28,7 +28,8 @@ const routes = [
   {
     path: '/checkout',
     name: 'checkout',
-    component: () => import(/* webpackChunkName: "checkout" */ '../views/CheckoutView.vue')
+    component: () => import(/* webpackChunkName: "checkout" */ '../views/CheckoutView.vue'),
+    children: [{ path: 'confirmed/:orden', name: 'confirmed', props: true, component: () => import(/* webpackChunkName: "confirmed" */ '../views/ConfirmedView.vue'), }]
   },
   {
     path: '*',

@@ -1,9 +1,10 @@
 <template>
   <v-container id="CheckoutView">
-    <v-row>
+    <router-view v-if="confirmedOk" />
+    <v-row v-else>
       <v-col cols="12" md="8">
         <h1 class="text-center" v-text="`Checkout`" />
-        <form-component />
+        <form-component @submitForm="confirmed" />
       </v-col>
       <v-col cols="12" md="4">
         <bag-component />
@@ -19,15 +20,12 @@ import FormComponent from "@/components/FormComponent.vue";
 export default {
   components: { BagComponent, FormComponent },
   name: "CheckoutView",
-  // props: {},
-  //   data: () => ({}),
-  // computed: {},
-  // methods: {},
-  // watch: {},
-  // components: {},
-  // mixins: [],
-  // filters: {},
-  // -- Lifecycle Methods
-  // -- End Lifecycle Methods
+  data: () => ({confirmedOk: false,  }),
+  methods: {
+    confirmed(datos) {
+      this.confirmedOk = true;
+      this.$router.push({ name: "confirmed", params: { orden: datos.orden } });
+    },
+  },
 };
 </script>

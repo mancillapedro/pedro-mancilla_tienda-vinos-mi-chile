@@ -97,16 +97,9 @@ export default {
       this.$refs.form.validate();
       if (!this.valid) return;
       this.datos["orden"] = Date.now();
-      console.log(this.datos);
       this.$emit("submitForm", this.datos);
     },
   },
-  // watch: {},
-  // components: {},
-  // mixins: [],
-  // filters: {},
-  // -- Lifecycle Methods
-  // -- End Lifecycle Methods
 };
 </script>
 
