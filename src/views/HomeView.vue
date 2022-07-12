@@ -1,15 +1,21 @@
 <template>
-  <hello-world />
+  <div id="HomeView">
+    <h1 v-text="`HomeView`" />
+  </div>
 </template>
 
 <script>
-  import HelloWorld from '../components/HelloWorld'
-
-  export default {
-    name: 'Home',
-
-    components: {
-      HelloWorld,
-    },
-  }
+export default {
+  name: "HomeView",
+  // props: {},
+  // data: () => ({}),
+  // computed: {},
+  // methods: {},
+  // watch: {},
+  // components: {},
+  // mixins: [],
+  // filters: {},
+  // -- Lifecycle Methods
+  // -- End Lifecycle Methods
+};
 </script>
