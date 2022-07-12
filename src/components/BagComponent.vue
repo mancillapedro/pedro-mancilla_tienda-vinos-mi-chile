@@ -31,10 +31,6 @@
 import { mapGetters, mapState } from "vuex";
 export default {
   name: "BagComponent",
-  // props: {},
-  // data: () => ({
-  //   products: [],
-  // }),
   computed: {
     ...mapState(["bag"]),
     ...mapGetters(["subTotal", "descuento", "total"]),
@@ -46,12 +42,5 @@ export default {
       ];
     },
   },
-  // methods: {},
-  // watch: {},
-  // components: {},
-  // mixins: [],
-  // filters: {},
-  // -- Lifecycle Methods
-  // -- End Lifecycle Methods
 };
 </script>
