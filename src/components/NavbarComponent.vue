@@ -1,10 +1,8 @@
 <template>
   <nav id="NavbarComponent">
-    <v-app-bar app color="primary" dark>
+    <v-app-bar app color="black" dark>
       <v-toolbar-title v-text="`Vinos Mi Chile`" />
-
       <v-spacer></v-spacer>
-
       <v-btn
         text
         v-for="(btn, i) in btns"
@@ -20,7 +18,6 @@
 <script>
 export default {
   name: "NavbarComponent",
-  // props: {},
   data: () => ({
     btns: [
       { text: "Home", route: "home" },

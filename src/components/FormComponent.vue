@@ -38,7 +38,11 @@
     <fieldset class="mt-8">
       <legend class="text-h4" v-text="`Forma de Pago`" />
       <v-divider />
-      <v-radio-group v-model="datos[formaPago]" required>
+      <v-radio-group
+        v-model="datos[formaPago]"
+        :rules="[(v) => !!v || `Este campo es obligatorio`]"
+        required
+      >
         <v-radio
           v-for="forma in formaPago"
           :key="forma.value"
@@ -65,7 +69,12 @@ export default {
     datosComprador: [
       { name: "name", label: "Nombre" },
       { name: "email", label: "Email", type: "email" },
-      { name: "repeatEmail", label: "Repetir Email", type: "email", rules:['repeatEmail'] },
+      {
+        name: "repeatEmail",
+        label: "Repetir Email",
+        type: "email",
+        rules: ["repeatEmail"],
+      },
       { name: "phone", label: "Teléfono" },
     ],
     datosDespacho: [
@@ -79,14 +88,12 @@ export default {
       { value: 4, label: "Contra entrega" },
     ],
   }),
-  // computed: {},
   methods: {
     getRules(input) {
       const rules = {
         text: (v) => !!v || "Este campo es obligatorio",
-        email: (v) => !!v || "Ingrese un email valido",
-        repeatEmail: (v) =>
-          (this.datos.email == v) || "Ingrese el mismo email",
+        email: (v) => /.+@.+\..+/.test(v) || "Ingrese un email valido",
+        repeatEmail: (v) => this.datos.email == v || "Ingrese el mismo email",
       };
       return [
         rules[input.type || "text"],

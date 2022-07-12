@@ -23,6 +23,15 @@
           <v-col cols="6" :key="`total${i}`" v-text="total.total" />
         </template>
       </v-row>
+      <v-btn
+        v-if="$route.name != 'checkout'"
+        class="mt-4"
+        color="primary"
+        v-text="`pagar`"
+        block
+        @click="$router.push({ name: 'checkout' })"
+        :disabled="bag.length < 1"
+      />
     </v-card-text>
   </v-card>
 </template>
@@ -32,7 +41,7 @@ import { mapGetters, mapState } from "vuex";
 export default {
   name: "BagComponent",
   computed: {
-    ...mapState(["bag"]),
+    ...mapState(['bag']),
     ...mapGetters(["subTotal", "descuento", "total"]),
     totales() {
       return [

@@ -18,7 +18,7 @@ export default new Vuex.Store({
   actions: {
     addToBag({ commit }, product) {
       commit('ADD_TO_BAG', product)
-    }
+    },
   },
   modules: {
   }
