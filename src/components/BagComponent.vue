@@ -25,7 +25,7 @@
     </v-card-text>
     <v-divider />
     <v-card-text>
-      <v-row justify="">
+      <v-row >
         <template v-for="(total, i) in totales">
           <v-col cols="6" :key="`text${i}`" v-text="total.text" />
           <v-col

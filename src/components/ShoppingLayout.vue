@@ -6,7 +6,7 @@
     <v-col cols="12" md="8">
       <h1 v-text="title" />
       <v-row>
-        <v-col cols="4" v-for="product in products" :key="product.id">
+        <v-col cols="12" md="4" v-for="product in products" :key="product.id">
           <card-with-description-component
             :product="product"
             @agregar="addToBag"
